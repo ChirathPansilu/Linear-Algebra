@@ -19,4 +19,5 @@ input()
 print(Mat.minorMat(matDet, 3,2))
 print()
 print(Mat.adjoint(matAdj))
-
+print()
+print(Mat.inverse(matDet))

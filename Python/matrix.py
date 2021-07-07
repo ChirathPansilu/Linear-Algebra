@@ -124,3 +124,13 @@ class Mat:
                 out -= elem_row0*Mat.det(Mat.minor(matrix,elem_id))
 
         return out
+
+    @staticmethod
+    def inverse(matrix):
+        if(matrix.rows!=matrix.cols):
+            raise Exception(f"Should be a square matrix [{matrix.rows}x{matrix.cols}]")
+
+        if((detVal:=Mat.det(matrix)) == 0):
+            raise Exception("Inverse does not exist, This is a Singular Matrix")
+
+        return Mat.adjoint(matrix).scalarMul(1/detVal)
