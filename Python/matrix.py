@@ -62,6 +62,17 @@ class Mat:
         return Mat(output)
 
     @staticmethod
+    def minorMat(matrix, row,column):
+        if(matrix.rows!=matrix.cols):
+            raise Exception(f"Should be a square matrix [{matrix.rows}x{matrix.cols}]")
+
+        tempMat = matrix.mat[:row]+matrix.mat[row+1:]
+        transpose = [list(row) for i, row in enumerate(zip(*tempMat)) if i!=column] 
+        output = [list(row) for row in zip(*transpose)]
+        return Mat(output)
+
+
+    @staticmethod
     def det(matrix):
         if(matrix.rows!=matrix.cols):
             raise Exception(f"Should be a square matrix [{matrix.rows}x{matrix.cols}]")

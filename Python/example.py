@@ -14,3 +14,5 @@ print()
 print("Det of Above Original Matrix:")
 print(Mat.det(matDet))
 input()
+
+print(Mat.minorMat(matDet, 3,2))
