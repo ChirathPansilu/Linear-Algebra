@@ -52,6 +52,14 @@ class Mat:
         return Mat(out)
 
 
+    def scalarMul(self,scalar):
+        output = []
+        for row in self.mat:
+            output.append([scalar * elem for elem in row])
+
+        return Mat(output)
+
+
     @staticmethod
     def minor(matrix,elem_id):
         if(matrix.rows!=matrix.cols):
