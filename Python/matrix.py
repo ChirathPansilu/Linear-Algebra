@@ -61,6 +61,7 @@ class Mat:
         output = [list(row) for row in zip(*transpose)]
         return Mat(output)
 
+
     @staticmethod
     def minorMat(matrix, row,column):
         if(matrix.rows!=matrix.cols):
@@ -90,6 +91,13 @@ class Mat:
 
         return Mat(output)
 
+
+    @staticmethod
+    def adjoint(matrix):
+        cofac = Mat.cofactorMat(matrix)
+        output = [list(row) for row in zip(*cofac.mat)]
+        
+        return Mat(output)
 
 
     @staticmethod
