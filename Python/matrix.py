@@ -71,6 +71,26 @@ class Mat:
         output = [list(row) for row in zip(*transpose)]
         return Mat(output)
 
+    @staticmethod
+    def cofactorMat(matrix):
+        if(matrix.rows!=matrix.cols):
+            raise Exception(f"Should be a square matrix [{matrix.rows}x{matrix.cols}]")
+
+        output = []
+        for row in range(matrix.rows):
+            tempRow = []
+            for column in range(matrix.cols):
+                minorValue = Mat.det(Mat.minorMat(matrix, row, column))
+                if(row%2 == column%2):
+                    cofactorValue = minorValue
+                else:
+                    cofactorValue = -minorValue
+                tempRow.append(cofactorValue)
+            output.append(tempRow)
+
+        return Mat(output)
+
+
 
     @staticmethod
     def det(matrix):
