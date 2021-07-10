@@ -9,6 +9,8 @@ private:
 	std::vector<std::vector<double> > mData;
 	int mNumRows, mNumCols ;
 
+	Matrix getMinorMat(int row, int col) const;
+
 public:
 	Matrix(const std::vector<std::vector<double> >& mat);  // Specialized constructor
 
@@ -23,6 +25,8 @@ public:
 
 	friend Matrix operator*(double s, Matrix m1);   // Scaling
 	friend std::ostream& operator<<(std::ostream& stream, const Matrix& m1);
+
+	double det() const; 	       			// Determinant Value
 
 };
 

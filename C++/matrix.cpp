@@ -114,3 +114,39 @@ std::ostream& operator<<(std::ostream& stream, const Matrix& m1){
 	}
 	return stream;
 }
+
+Matrix Matrix::getMinorMat(int row, int col) const{
+	assert( row >= 0 && row < mNumRows && col >= 0 && col < mNumCols);
+
+	std::vector<std::vector<double> > output;
+
+	for(int r=0;r<mNumRows;r++){
+		if(r!=row){
+			std::vector<double> tempRow(mData[r].begin(), mData[r].begin()+col);
+			tempRow.insert(tempRow.end(), mData[r].begin()+col+1, mData[r].end());
+			output.push_back(tempRow);
+		}
+	}
+
+	return {output};
+}
+
+double Matrix::det() const{
+	assert( mNumRows == mNumCols );
+
+	if( mNumRows==2 ){
+		return ( mData[0][0] * mData[1][1] - mData[0][1] * mData[1][0] );
+	}
+	
+	double output=0;
+
+	//Using first row to calculate determinant
+	for( int c=0; c<mNumCols; c++ ){
+		if(c%2==0){
+			output += mData[0][c] * getMinorMat(0,c).det();
+		}else{
+			output -= mData[0][c] * getMinorMat(0,c).det();
+		}
+	}
+	return output;
+}
