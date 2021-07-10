@@ -150,3 +150,20 @@ double det(const Matrix& m1){
 	}
 	return output;
 }
+
+Matrix Matrix::cofactorMat() const{
+	assert( mNumRows == mNumCols );
+
+	Matrix output(mData);
+	
+	for(int r=0; r<mNumRows; r++){
+		for(int c=0; c<mNumCols; c++){
+			if(r%2==c%2){
+				output.mData[r][c] = det(this->getMinorMat(r,c)); 
+			}else{
+				output.mData[r][c] = -det(this->getMinorMat(r,c)); 
+			}
+		}
+	}
+	return output;
+}

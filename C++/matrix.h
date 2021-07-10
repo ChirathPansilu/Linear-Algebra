@@ -10,6 +10,7 @@ private:
 	int mNumRows, mNumCols ;
 
 	Matrix getMinorMat(int row, int col) const;
+	Matrix cofactorMat() const;
 
 public:
 	Matrix(const std::vector<std::vector<double> >& mat);  // Specialized constructor

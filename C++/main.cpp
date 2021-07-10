@@ -25,4 +25,5 @@ int main(){
 
 	std::cout << M1 << std::endl;
 	std::cout << det(M2) << std::endl;
+
 }
