@@ -131,21 +131,21 @@ Matrix Matrix::getMinorMat(int row, int col) const{
 	return {output};
 }
 
-double Matrix::det() const{
-	assert( mNumRows == mNumCols );
+double det(const Matrix& m1){
+	assert( m1.mNumRows == m1.mNumCols );
 
-	if( mNumRows==2 ){
-		return ( mData[0][0] * mData[1][1] - mData[0][1] * mData[1][0] );
+	if( m1.mNumRows==2 ){
+		return ( m1.mData[0][0] * m1.mData[1][1] - m1.mData[0][1] * m1.mData[1][0] );
 	}
 	
 	double output=0;
 
 	//Using first row to calculate determinant
-	for( int c=0; c<mNumCols; c++ ){
+	for( int c=0; c<m1.mNumCols; c++ ){
 		if(c%2==0){
-			output += mData[0][c] * getMinorMat(0,c).det();
+			output += m1.mData[0][c] * det(m1.getMinorMat(0,c));
 		}else{
-			output -= mData[0][c] * getMinorMat(0,c).det();
+			output -= m1.mData[0][c] * det(m1.getMinorMat(0,c));
 		}
 	}
 	return output;

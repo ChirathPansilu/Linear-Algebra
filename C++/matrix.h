@@ -26,7 +26,7 @@ public:
 	friend Matrix operator*(double s, Matrix m1);   // Scaling
 	friend std::ostream& operator<<(std::ostream& stream, const Matrix& m1);
 
-	double det() const; 	       			// Determinant Value
+	friend double det(const Matrix& m1); 	        // Determinant Value
 
 };
 
