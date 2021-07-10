@@ -186,3 +186,17 @@ Matrix Matrix::transpose() const{
 Matrix adj(const Matrix& m1){
 	return m1.cofactorMat().transpose();
 }
+
+
+Matrix Matrix::inverse() const{
+	assert( mNumRows == mNumCols );
+	double detVal = det(*this);
+
+	if(detVal==0){
+		std::cout << "Singular Matrix, Inverse does not exist" << std::endl;
+	}
+
+	assert( detVal != 0 );
+
+	return (1./detVal) * adj(*this);
+}

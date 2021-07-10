@@ -28,4 +28,5 @@ int main(){
 
 	std::cout << M2.transpose() << std::endl;
 	std::cout << adj(M2) << std::endl;
+	std::cout << M2.inverse() << std::endl;
 }

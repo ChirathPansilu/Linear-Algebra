@@ -24,6 +24,7 @@ public:
 	Matrix operator-() const;			// Unary -
 	Matrix operator*(const Matrix& m1) const; 	// Scalar Multiplication *
 	Matrix transpose() const;			// Transpose
+	Matrix inverse() const;				// Inverse
 
 	friend Matrix operator*(double s, Matrix m1);   // Scaling
 	friend std::ostream& operator<<(std::ostream& stream, const Matrix& m1);
