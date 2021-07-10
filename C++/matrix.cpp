@@ -1,26 +1,49 @@
 #include <iostream>
 #include <vector>
+#include <cassert>
+#include <iomanip>
 #include "matrix.h"
 
 
-class Matrix{
-private:
-	std::vector<std::vector<double> > mat;
+Matrix::Matrix(const std::vector<std::vector<double> >& mat){
+	mData = mat;
 
-public:
-	Matrix(std::vector<std::vector<double> > m){
-		mat = m;
-		size_t rows = m.size();
-		size_t cols = m[0].size();
-	}
+	mNumRows = mat.size();
+	mNumCols = mat[0].size();
+}
 
-	void printMat(){
-		for(auto r: mat){
-			for(auto i: r){
-				std::cout << i << " ";
-			}
-			std::cout << '\n';
+
+int Matrix::GetNumberOfRows() const{
+	return mNumRows;
+}
+
+
+int Matrix::GetNumberOfCols() const{
+	return mNumCols;
+}
+
+
+Matrix Matrix::operator+(const Matrix& m1) const{
+	assert( mNumRows == m1.GetNumberOfRows() && mNumCols == m1.GetNumberOfCols() );
+
+	std::vector<std::vector<double> > output(m1.mData);
+	
+	for(int i=0; i<mNumRows; i++){
+		for(int j=0; j<mNumCols; j++){
+			output[i][j] = mData[i][j] + m1.mData[i][j];
 		}
-	}
-};
+	}	
 
+	return {output};
+}
+
+
+std::ostream& operator<<(std::ostream& stream, const Matrix& m1){
+	for(int r=0; r < m1.mNumRows; r++){
+		for(int c=0; c < m1.mNumCols; c++){
+			stream << std::setw(4) << m1.mData[r][c] ;
+		}
+		stream << '\n';
+	}
+	return stream;
+}

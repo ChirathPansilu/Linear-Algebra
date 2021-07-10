@@ -6,22 +6,18 @@
 
 class Matrix{
 private:
-	std::vector<std::vector<double> > mat;
+	std::vector<std::vector<double> > mData;
+	int mNumRows, mNumCols ;
 
 public:
-	Matrix(std::vector<std::vector<double> > m){
-		mat = m;
-		size_t rows = m.size();
-		size_t cols = m[0].size();
-	}
+	Matrix(const std::vector<std::vector<double> >& mat);  // Default constructor
 
-	void printMat(){
-		for(auto r: mat){
-			for(auto i: r){
-				std::cout << i << " ";
-			}
-			std::cout << '\n';
-		}
-	}
+	int GetNumberOfRows() const;
+	int GetNumberOfCols() const;
+
+	Matrix operator+(const Matrix& m1) const; 	// Binary +
+
+	friend std::ostream& operator<<(std::ostream& stream, const Matrix& m1);
+
 };
 
