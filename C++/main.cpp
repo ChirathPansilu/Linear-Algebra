@@ -21,5 +21,5 @@ int main(){
 
 	std::cout << 3*M1 << std::endl;
 
-	std::cout << M1 << std::endl;
+	std::cout << M1*M2 << std::endl;
 }

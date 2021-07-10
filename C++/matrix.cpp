@@ -71,6 +71,29 @@ Matrix Matrix::operator-() const{
 	return output;
 }
 
+
+Matrix Matrix::operator*(const Matrix& m1) const{
+	assert(mNumCols == m1.mNumRows);
+
+	std::vector<std::vector<double> > output;
+
+	for(int r=0; r<mNumRows; r++){
+		std::vector<double> tempRow;
+
+		for(int c=0; c<mNumCols; c++){
+			double tempSum = 0;
+
+			for(int e=0; e<mNumCols; e++){
+				tempSum += mData[r][e] * m1.mData[e][c];
+			}
+			tempRow.push_back(tempSum);
+		}
+		output.push_back(tempRow);	
+	}
+	return {output};
+}
+
+
 Matrix operator*(double s, Matrix m1){
 
 	for(int i=0; i<m1.mNumRows; i++){
@@ -85,7 +108,7 @@ Matrix operator*(double s, Matrix m1){
 std::ostream& operator<<(std::ostream& stream, const Matrix& m1){
 	for(int r=0; r < m1.mNumRows; r++){
 		for(int c=0; c < m1.mNumCols; c++){
-			stream << std::setw(4) << m1.mData[r][c] ;
+			stream << std::setw(6) << m1.mData[r][c] ;
 		}
 		stream << '\n';
 	}
