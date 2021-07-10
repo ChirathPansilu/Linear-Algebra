@@ -10,7 +10,7 @@ private:
 	int mNumRows, mNumCols ;
 
 public:
-	Matrix(const std::vector<std::vector<double> >& mat);  // Default constructor
+	Matrix(const std::vector<std::vector<double> >& mat);  // Specialized constructor
 
 	int GetNumberOfRows() const;
 	int GetNumberOfCols() const;
