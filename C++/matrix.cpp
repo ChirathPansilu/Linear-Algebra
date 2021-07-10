@@ -167,3 +167,22 @@ Matrix Matrix::cofactorMat() const{
 	}
 	return output;
 }
+
+
+Matrix Matrix::transpose() const{
+	std::vector<std::vector<double> > output;
+
+	for(int c=0; c<mNumCols; c++){
+		std::vector<double> temp;
+
+		for(int r=0; r<mNumRows; r++){
+			temp.push_back(mData[r][c]);
+		}
+		output.push_back(temp);
+	}
+	return {output};
+}
+
+Matrix adj(const Matrix& m1){
+	return m1.cofactorMat().transpose();
+}

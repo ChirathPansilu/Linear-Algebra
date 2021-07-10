@@ -26,4 +26,6 @@ int main(){
 	std::cout << M1 << std::endl;
 	std::cout << det(M2) << std::endl;
 
+	std::cout << M2.transpose() << std::endl;
+	std::cout << adj(M2) << std::endl;
 }

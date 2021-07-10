@@ -23,11 +23,14 @@ public:
 	Matrix operator+() const; 			// Unary +
 	Matrix operator-() const;			// Unary -
 	Matrix operator*(const Matrix& m1) const; 	// Scalar Multiplication *
+	Matrix transpose() const;			// Transpose
 
 	friend Matrix operator*(double s, Matrix m1);   // Scaling
 	friend std::ostream& operator<<(std::ostream& stream, const Matrix& m1);
 
 	friend double det(const Matrix& m1); 	        // Determinant Value
+	friend Matrix adj(const Matrix& m1);		// Adjoint Matrix
+
 
 };
 
